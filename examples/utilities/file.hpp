@@ -51,8 +51,9 @@ namespace utilities
         auto fs_end = fs.tellg();
         fs.seekg(std::ios::beg);
         auto fs_beg = fs.tellg();
-
-        auto file_size = static_cast<size_t>(fs_end - fs_beg);
+        
+        //fstream end-beg has 2 more byte than actual file size
+        auto file_size = static_cast<size_t>(fs_end - fs_beg - 2);
         auto vector_size = data.size();
 
         data.reserve(vector_size + file_size);
